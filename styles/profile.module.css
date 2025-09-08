@@ -1,0 +1,207 @@
+.profileContainer {
+    min-height: 80vh;
+    margin: -10px 30px 30px 30px;
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #DBBCA7;
+    margin-top: 20px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+
+}
+
+.sectionHeader {
+    font-size: 4vh !important;
+    margin: 0;
+}
+
+.lineDark {
+    background-color: #2E2E3A;
+    width: 100%;
+    margin-top: 25px;
+    height: 2px;
+}
+
+.lineLight {
+    background-color: #DBBCA7;
+    width: 100%;
+    margin-top: 5px;
+    height: 2px;
+}
+
+.gridAdmin {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 20px 40px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.flexRowBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flexColCenter {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.inputDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 20vw
+}
+
+.toggleBtn {
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    display: flex
+}
+
+
+.header {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.loginHeader {
+    font-size: 6vh;
+    color: #2e2e3a;
+}
+
+.registerHeader {
+    font-size: 4vh;
+    color: #bc5d2f;
+    padding-top: 30px;
+    margin: 0
+}
+
+.inputLabel {
+    text-align: left;
+    margin: 0
+}
+
+.input {
+    padding: 10px;
+    font-size: 2vh;
+    border: 2px solid #2e2e3a;
+    border-radius: 5px;
+}
+
+.button {
+    font-size: 2.3vh;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.error {
+    color: #bc5d2f;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.success {
+    color: rgba(119, 163, 57, 0.61);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+.ordersHeader {
+    font-size: 4vh;
+    margin: 20px 0 0;
+}
+
+
+.adminHeader {
+    font-size: 6vh;
+    margin: 0;
+}
+
+
+.gridAdmin button {
+    font-size: 3vh;
+
+}
+
+/* Orders */
+.ordersContainer {
+    margin: 20px;
+}
+
+.orderCard {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.orderHeader {
+    font-size: 2.5vh;
+    margin: 0;
+    color: #bc5d2f;
+}
+
+.orderTotal {
+    font-size: 2.5vh;
+}
+
+.itemsHeader {
+    font-size: 2.2vh;
+}
+
+.itemsList {
+    list-style: none;
+    margin: 0;
+    max-height: 130px;
+    overflow-y: auto;
+}
+
+.item {
+    font-size: 2.4vh;
+    border: 1px solid #bc5d2f;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.itemInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.itemImage {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+
+
