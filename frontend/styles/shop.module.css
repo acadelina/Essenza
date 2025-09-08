@@ -1,0 +1,132 @@
+
+.filtersSection{
+    width:25vw;
+    border-right: 1px solid #2E2E3A;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    flex-shrink: 0;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+.filtersHeader {
+    font-size: 5vh;
+    margin: 0;
+}
+
+
+.divider {
+    width: 23vw;
+    height: 1px;
+    background-color: #fff;
+    border-top: 1px solid #2e2e3a;
+    margin: 30px 10px 0 0;
+}
+
+/* Common filter block */
+.filterBlock {
+    width: 23vw;
+    margin-top: 20px;
+}
+
+.filterSubHeader {
+    padding-left: 10px;
+    margin: 0;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    font-weight: 550;
+}
+
+.optionList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    width: 23vw;
+    max-height: 180px;
+    overflow: auto;
+    padding-right: 5px;
+}
+
+.option {
+    text-transform: capitalize;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #2e2e3a;
+
+}
+
+.option.selected {
+    background-color: #2e2e3a;
+    color: #fff;
+}
+
+/* PriceRange */
+.prBlock{
+    width: 300px;
+}
+.sliderWrapper {
+    width: 250px;
+    padding-left: 10px;
+}
+
+.priceText {
+    font-size: 14px;
+    margin: 15px 0 0;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+/* Product Card 2*/
+.productCard {
+    background: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.productImageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.productImage {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.imagePlaceholder {
+    background: #eee;
+    width: 100%;
+    height: 150px;
+}
+
+.productInfo {
+    padding: 10px;
+    background-color: #ffffff;
+    align-items:center;
+    justify-content:center ;
+    text-align: center;
+}
+
+.productText {
+    text-align: center;
+    justify-content: center;
+}
+
+.productDiv{
+    align-items: center;
+    justify-content: center !important;
+    text-align: center;
+}
+
+

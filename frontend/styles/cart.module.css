@@ -1,0 +1,153 @@
+.cartPage {
+    margin: 30px;
+    margin-top: -10px;
+    width: 94vw;
+    min-height: 58vh;
+}
+
+.pageHeader {
+    font-size: 6vh;
+    margin: 0;
+}
+
+.line {
+    background-color: #2e2e3a;
+    width: 100%;
+    height: 2px;
+    margin-top: 25px ;
+}
+.divider{
+    border-bottom:1.5px solid #DBBCA7;
+    width:94%;
+    margin-top:15px
+}
+.productsList {
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+/*  CartProduct */
+.cartProduct {
+    width: 100%;
+    margin: 15px 0;
+    justify-items: center;
+    margin-bottom: 0px;
+    justify-content: center;
+}
+
+.productRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.productImage {
+    height: 13vh;
+    width: 13vh;
+    margin-right: 10px;
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+}
+
+.brandText {
+    text-transform: uppercase;
+    font-size: 3vh;
+    margin-bottom: 5px;
+}
+
+.nameText {
+    text-transform: capitalize;
+    font-size: 2.5vh;
+    font-weight: 400;
+    margin-top: 0px;
+}
+
+.volumeText {
+    font-size: 2.5vh;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.quantityControl {
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.adjustBtn {
+    font-size: 3vh;
+    cursor: pointer;
+}
+
+.quantity {
+    width: 5vw;
+    height: 3vh;
+    text-align: center;
+    margin: 0 10px;
+    font-weight: 600;
+}
+
+.priceRemove {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20vw;
+    justify-content: flex-end;
+}
+
+.priceText {
+    font-size: 3vh;
+}
+
+.removeBtn {
+    height: 6vh;
+    width: 6vh;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+/*  Footer  */
+.cartFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+
+}
+
+.couponInput {
+    width: 10vw;
+    text-align: center;
+}
+
+.casseteBtn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 2.3vh;
+    padding: 6px 12px;
+    border-radius: 5px;
+    background-color: #2e2e3a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.totalText {
+    font-size: 3vh;
+    color: #bc5d2f;
+}
