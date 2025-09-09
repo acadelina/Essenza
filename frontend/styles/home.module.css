@@ -24,10 +24,17 @@
 
 .productInfo {
     padding: 15px;
+    padding-top: 10px;
     background-color: #fff;
-    height: 13vh;
+    height: 16vh;
 }
 
+.productInfo p{
+    height: 5vh;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    justify-content: center;
+}
 /* Main Section */
 .mainSection {
     position: relative;

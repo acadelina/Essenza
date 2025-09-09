@@ -137,10 +137,17 @@ button.addToCartBtn.disabled {
 
 .notes {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     flex-direction: row;
     align-items: center;
+    max-width: 30vw;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    max-height: 16.5vh;
+
 }
+
 
 .note {
     font-size: 1.2vw;

@@ -1,13 +1,31 @@
 const { Product, ProductVariant } = require("../models");
+const sequelize = require("../config/db");
+
 
 exports.createProduct = async (req, res) => {
-    try{
-        const {brand, name, price, stock, description, notes} = req.body;
-        const product=Product.create({brand,name,price,stock,description,notes});
-        res.status(201).json(product);
-    }catch(err){
-        res.status(500).json({ error: err.message });
-    }
+
+        const { product, variants } = req.body;
+        try {
+
+            const result = await sequelize.transaction(async (t) => {
+                const newProduct = await Product.create(product, { transaction: t });
+
+                const variantsWithProductId = variants.map((v) => ({
+                    ...v,
+                    product_id: newProduct.id,
+                }));
+
+                await ProductVariant.bulkCreate(variantsWithProductId, { transaction: t });
+
+                return newProduct;
+            });
+
+            return res.status(201).json({ message: "Product created", product: result });
+        } catch (error) {
+            console.error("error:", error);
+            return res.status(500).json({ error: "Can't create product" });
+        }
+
 }
 
 exports.updateProduct = async (req, res) => {

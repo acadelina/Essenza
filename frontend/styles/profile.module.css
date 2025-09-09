@@ -62,7 +62,8 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 20vw
+    width: 20vw;
+    margin-top: 20px;
 }
 
 .toggleBtn {
@@ -86,6 +87,7 @@
 .loginHeader {
     font-size: 6vh;
     color: #2e2e3a;
+
 }
 
 .registerHeader {
@@ -141,7 +143,10 @@
 
 .gridAdmin button {
     font-size: 3vh;
-
+}
+.Link {
+    font-size: 3vh;
+    width: 100%;
 }
 
 /* Orders */

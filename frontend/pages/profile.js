@@ -84,7 +84,7 @@ export default function Profile() {
                 <div className={styles.section} style={{flexDirection: "column"}}>
                     <h2 className={`headerText ${styles.sectionHeader} `}>Administration</h2>
                     <div className={styles.gridAdmin}>
-                        <button className="brandCase">ADD NEW PRODUCT</button>
+                        <button className="brandCase" onClick={() => window.location.href = "/admin/addProduct"}>ADD NEW PRODUCT</button>
                         <button className="brandCase">SEE ALL PRODUCTS</button>
                         <button className="brandCase">BEST DEALS</button>
                         <button className="brandCase">ORDERS</button>
