@@ -1,8 +1,11 @@
 import {useState} from "react";
 import styles from "../../styles/admin.module.css"
+import AlertBox from "../../components/AlertBox";
 
 export default function addProduct() {
 
+    const [info, setInfo] = useState(null);
+    const [error, setError] = useState(null);
     const [product, setProduct] = useState({
         name: "",
         brand: "",
@@ -47,7 +50,8 @@ export default function addProduct() {
         });
 
         if (res.ok) {
-            alert("Produs adăugat cu succes!");
+            const data= await res.json();
+            setInfo(data.message);
             setProduct({
                 name: "",
                 brand: "",
@@ -58,7 +62,8 @@ export default function addProduct() {
             });
             setVariants([{volume: "", price: "", stock: ""}]);
         } else {
-            alert("Eroare la adăugarea produsului!");
+            const data= await res.json();
+            setError(data.error);
         }
     };
 
@@ -169,13 +174,15 @@ export default function addProduct() {
                     </div>
                 ))}
                 <button className={`cassete ${styles.button}`} type="button" onClick={addVariant}>
-                    + Adaugă variantă
+                    + Add option
                 </button>
                 <br/>
                 <div className={styles.saveButtonWrapper}>
-                    <button className={`cassete `} type="submit">Salvează produs</button>
+                    <button className={`cassete `} type="submit">SAVE</button>
                 </div>
             </form>
+            <AlertBox message={info} onClose={() => setInfo(null)}/>
+            <AlertBox message={error} onClose={() => setError(null)}/>
         </div>
     );
 }

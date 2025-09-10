@@ -1,13 +1,21 @@
 const { Product, ProductVariant } = require("../models");
 const sequelize = require("../config/db");
 
-
 exports.createProduct = async (req, res) => {
+    const { product, variants } = req.body;
 
-        const { product, variants } = req.body;
-        try {
+    try {
+        const result = await sequelize.transaction(async (t) => {
+            let existingProduct = await Product.findOne({
+                where: {
+                    brand: product.brand,
+                    name: product.name
+                },
+                transaction: t
+            });
 
-            const result = await sequelize.transaction(async (t) => {
+            if (!existingProduct) {
+
                 const newProduct = await Product.create(product, { transaction: t });
 
                 const variantsWithProductId = variants.map((v) => ({
@@ -17,16 +25,48 @@ exports.createProduct = async (req, res) => {
 
                 await ProductVariant.bulkCreate(variantsWithProductId, { transaction: t });
 
-                return newProduct;
-            });
+                return { product: newProduct, created: true };
+            } else {
 
-            return res.status(201).json({ message: "Product created", product: result });
-        } catch (error) {
-            console.error("error:", error);
-            return res.status(500).json({ error: "Can't create product" });
-        }
+                const existingVariants = await ProductVariant.findAll({
+                    where: { product_id: existingProduct.id },
+                    transaction: t
+                });
 
-}
+
+                const existingVolumes = existingVariants.map(v => v.volume);
+
+                console.log(existingVolumes);
+                const newVariants = variants.filter(
+                    (v) => !existingVolumes.includes(Number(v.volume))
+                );
+                console.log(newVariants)
+
+                if (newVariants.length > 0) {
+                    const variantsWithProductId = newVariants.map((v) => ({
+                        ...v,
+                        product_id: existingProduct.id,
+                    }));
+
+                    await ProductVariant.bulkCreate(variantsWithProductId, { transaction: t });
+                }
+
+                return { product: existingProduct, created: false };
+            }
+        });
+
+        return res.status(201).json({
+            message: result.created
+                ? "Product created"
+                : "Product already exists, new variants added",
+            product: result.product,
+        });
+
+    } catch (error) {
+        console.error("error:", error);
+        return res.status(500).json({ error: "Can't create product" });
+    }
+};
 
 exports.updateProduct = async (req, res) => {
     try{
@@ -46,7 +86,7 @@ exports.deleteProduct = async (req, res) => {
     try{
         const product=await Product.findByPk(req.params.id);
         if(!product) return res.status(404).json({ msg: "Product not found" });
-
+        await ProductVariant.destroy({ where: { product_id: product.id } });
         await product.destroy();
         res.json({msg: "Product deleted successfully"});
     }catch(err){
