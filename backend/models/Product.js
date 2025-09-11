@@ -11,6 +11,7 @@ const Product = sequelize.define("products", {
     notes: {type: DataTypes.TEXT},
     id: {type:DataTypes.INTEGER, allowNull: false,primaryKey: true,autoIncrement: true,},
     image:{type: DataTypes.STRING, allowNull: false},
+    bestDeal:{type: DataTypes.INTEGER},
 },
 {
     timestamps: false

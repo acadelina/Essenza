@@ -3,9 +3,8 @@ const {
     createProduct,
     getProducts,
     getProductById,
-    updateProduct,
     deleteProduct,
-    deleteVariant
+    deleteVariant, updateBestDeals
 } = require("../controllers/productController");
 
 const router = express.Router();
@@ -17,8 +16,8 @@ router.post("/",authMiddleware,isAdmin, createProduct);
 router.get("/", getProducts);//.
 router.get("/:id", getProductById);//.
 
+router.put("/best-deals",authMiddleware,isAdmin, updateBestDeals);
 
-router.put("/:id",authMiddleware,isAdmin, updateProduct);//*
 router.delete("/:id",authMiddleware,isAdmin, deleteProduct);//.
 router.delete("/:id/variants/:variantId", authMiddleware, isAdmin, deleteVariant);//.
 

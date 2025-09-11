@@ -50,6 +50,22 @@ exports.createProduct = async (req, res) => {
 
                     await ProductVariant.bulkCreate(variantsWithProductId, { transaction: t });
                 }
+                const oldVariants = variants.filter(
+                    (v) => existingVolumes.includes(Number(v.volume))
+                );
+
+                for (const v of oldVariants) {
+                    await ProductVariant.update(
+                        { price: v.price, stock: v.stock },
+                        {
+                            where: {
+                                product_id: existingProduct.id,
+                                volume: v.volume
+                            },
+                            transaction: t
+                        }
+                    );
+                }
 
                 return { product: existingProduct, created: false };
             }
@@ -92,20 +108,24 @@ exports.deleteVariant = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+exports.updateBestDeals = async (req, res) => {
+    try {
+        const { bestDeals } = req.body;
 
-exports.updateProduct = async (req, res) => {
-    try{
-        const product= await Product.findByPk(req.params.id);
-        if(!product) return res.status(404).json({ msg: "Product not found" });
+        if (!Array.isArray(bestDeals) || bestDeals.length > 3) {
+            return res.status(400).json({ msg: "You can select up to 3 best deals" });
+        }
 
-        const {brand, name, price, stock, description, notes} = req.body;
-        await product.update({brand,name,price,stock,description,notes});
-        res.json(product);
+        await Product.update({ bestDeal: 0 }, { where: {} });
+
+        await Product.update({ bestDeal: 1 }, { where: { id: bestDeals } });
+
+        return res.json({ msg: "Best deals updated successfully" });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ error: err.message });
     }
-    catch (err){
-        res.status(500).json({ error: err.message });
-    }
-}
+};
 
 exports.deleteProduct = async (req, res) => {
     try{
@@ -145,6 +165,7 @@ exports.getProducts = async (req, res) => {
                 stock: prod.stock,
                 notes:prod.notes,
                 sex:prod.sex,
+                bestDeal:prod.bestDeal,
 
             };
         });

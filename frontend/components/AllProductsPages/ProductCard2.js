@@ -17,7 +17,7 @@ export default function ProductCard2({brand, name, image, price}) {
                 <h3 className={styles.productText}>
                     {brand}
                 </h3>
-                <p className={styles.productText}>
+                <p className={styles.productText} >
                     {name}
                 </p>
 

@@ -122,8 +122,9 @@ export default function EditProduct() {
                             name="volume"
                             placeholder="Volume (ml)"
                             value={variant.volume}
+                            disabled={!!variant.id}
                             onChange={(e) => handleVariantChange(index, e)}
-                            required
+
                         />
                         </div >
                         <div className={styles.productRow}>

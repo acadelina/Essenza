@@ -86,7 +86,7 @@ export default function Profile() {
                     <div className={styles.gridAdmin}>
                         <button className="brandCase" onClick={() => window.location.href = "/admin/addProduct"}>ADD NEW PRODUCT</button>
                         <button className="brandCase" onClick={()=>window.location.href="/admin/seeAllProducts"}>SEE ALL PRODUCTS</button>
-                        <button className="brandCase">BEST DEALS</button>
+                        <button className="brandCase" onClick={()=>window.location.href="/admin/bestDeals"}>BEST DEALS</button>
                         <button className="brandCase">ORDERS</button>
                     </div>
                 </div>
