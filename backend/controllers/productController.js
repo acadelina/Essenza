@@ -68,6 +68,31 @@ exports.createProduct = async (req, res) => {
     }
 };
 
+exports.deleteVariant = async (req, res) => {
+    try {
+        const { id, variantId } = req.params;
+
+        const product = await Product.findByPk(id);
+        if (!product) {
+            return res.status(404).json({ msg: "Product not found" });
+        }
+
+        const variant = await ProductVariant.findOne({
+            where: { id: variantId, product_id: id },
+        });
+
+        if (!variant) {
+            return res.status(404).json({ msg: "Variant not found" });
+        }
+
+        await variant.destroy();
+        return res.json({ msg: "Variant deleted successfully" });
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: err.message });
+    }
+};
+
 exports.updateProduct = async (req, res) => {
     try{
         const product= await Product.findByPk(req.params.id);

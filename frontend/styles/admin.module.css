@@ -17,6 +17,14 @@
     margin: 0;
 }
 
+.thinTextUpper {
+    font-family: 'Montserrat',serif;
+    font-weight: 400;
+    color: #2E2E3A;
+    font-size: 1.2vw;
+   text-transform: uppercase;
+    margin: 0;
+}
 
 .grid {
     display: grid;
@@ -88,6 +96,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap:10px
 }
 
 .productImage {
@@ -99,12 +108,12 @@
 }
 
 .productInfo {
-
     display: flex;
     flex-direction: column;
    justify-content: left;
     width: 30vw;
 }
+
 
 .brandText {
     text-transform: uppercase;
@@ -158,4 +167,34 @@
     border-bottom:1.5px solid #DBBCA7;
     width:94%;
     margin-top:5px
+}
+
+.verticalDivider{
+    border-right:1.5px solid #2E2E3A;
+    height:150px;
+    margin-right: 10px;
+
+}
+
+
+.description {
+    font-family: 'Montserrat',serif;
+    font-weight: 400;
+    color: #2E2E3A;
+    font-size: 1.2vw;
+    text-transform: uppercase;
+    margin: 0;
+    max-height: 10vh;
+    overflow-x: auto;
+}
+
+.editPLayout{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15vw;
+    align-self: center;
+    gap:20px;
+    margin-top:15px;
 }

@@ -4,7 +4,8 @@ const {
     getProducts,
     getProductById,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    deleteVariant
 } = require("../controllers/productController");
 
 const router = express.Router();
@@ -18,6 +19,7 @@ router.get("/:id", getProductById);//.
 
 
 router.put("/:id",authMiddleware,isAdmin, updateProduct);//*
-router.delete("/:id",authMiddleware,isAdmin, deleteProduct);//*
+router.delete("/:id",authMiddleware,isAdmin, deleteProduct);//.
+router.delete("/:id/variants/:variantId", authMiddleware, isAdmin, deleteVariant);//.
 
 module.exports = router;
