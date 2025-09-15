@@ -13,7 +13,7 @@ router.post("/", createOrder);//.
 
 
 router.get("/", getOrders);//.
-router.get("/:id", getOrderById);
+router.get("/:cart", getOrderById);
 router.get("/user/:username", getOrdersByUser);//.
 
 

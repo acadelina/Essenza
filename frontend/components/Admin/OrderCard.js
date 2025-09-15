@@ -34,15 +34,13 @@ export default function OrderCard({order}) {
         } catch (err) {
 
             setError("Error updating status");
-        } finally {
-            setLoading(false);
         }
     };
 
     return (
         <div className={styles.orderCard}>
             <div style={{width: '50%'}}>
-                <h3 className={`headerText ${styles.orderHeader}`}>
+                <h3 className={`headerText ${styles.orderHeader}`} onClick={()=>window.location.href=`/admin/order/${order.id}`}>
                     Order #{order.id}
                 </h3>
                 <p className={`headerText ${styles.orderText}`}>Total: ${order.total}</p>

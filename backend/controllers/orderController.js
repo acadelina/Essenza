@@ -123,12 +123,35 @@ exports.getOrders = async (req, res) => {
 
 exports.getOrderById = async (req, res) => {
     try {
-        const { user, cart } = req.params;
-        const order = await Order.findOne({ where: { user, cart } });
+        const { cart } = req.params;
+        const order = await Order.findOne({ where: { cart } });
         if (!order) return res.status(404).json({ msg: "Order not found" });
-        res.json(order);
+
+        const items = await db.query(
+                    `SELECT cp.id_cart,cp.quantity, pv.volume, pv.price, p.name, p.brand, p.image
+           FROM carts_products cp
+           JOIN products_variants pv ON cp.id_variant = pv.id
+           JOIN products p ON p.id = pv.product_id
+           WHERE cp.id_cart = :cart_id`,
+                    {
+                        replacements: { cart_id: order.cart },
+                        type: db.QueryTypes.SELECT,
+                    }
+                );
+
+        const orderWithItems = {
+            id: order.cart,
+            status: order.status,
+            total: order.price,
+            user:order.user,
+            items,
+        };
+
+        res.json(orderWithItems);
+
     } catch (err) {
         res.status(500).json({ error: err.message });
+        console.error(err);
     }
 };
 

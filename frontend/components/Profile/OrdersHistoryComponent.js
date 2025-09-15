@@ -4,7 +4,7 @@ export default function OrdersHistoryComponent({image, name, volume, quantity, p
             <img
                 src={image}
                 alt={name}
-                style={{width: "40px", verticalAlign: "middle"}}
+                style={{width: "40px", height:"40px", objectFit: "contain"}}
             />{" "}
             {name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {volume}ml x {quantity} – $
             {price * quantity}

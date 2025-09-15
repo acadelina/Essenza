@@ -6,17 +6,17 @@ export default function OrdersHistory(username) {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-
+        if (!username) return;
         fetch(`http://localhost:5000/api/orders/user/${username.username}`)
             .then((res) => res.json())
-            .then((data) => setOrders(data))
+            .then((data) => setOrders(Array.isArray(data) ? data : []))
             .catch((err) => console.error(err));
 
     }, [username]);
     return (
         <div className={styles.ordersContainer}>
 
-            {orders.length === 0 ? (
+            {orders.length === 0 || !orders ? (
                 <p>No orders found.</p>
             ) : (
                 orders.map((order) => (
@@ -43,7 +43,7 @@ export default function OrdersHistory(username) {
                                         <span style={{textTransform: "capitalize"}}>{item.name}</span>
                                     </div>
 
-                                    <div>
+                                    <div style={{width:'10%'}}>
                                         {item.volume}ml x {item.quantity}
                                     </div>
                                     ${item.price * item.quantity}
