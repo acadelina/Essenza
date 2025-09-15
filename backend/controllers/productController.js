@@ -146,7 +146,7 @@ exports.getProducts = async (req, res) => {
                 {
                     model: ProductVariant,
                     as: "variants",
-                    attributes: ["price"],
+                    attributes: ["price","stock"],
                 }
             ]
         });
@@ -166,6 +166,7 @@ exports.getProducts = async (req, res) => {
                 notes:prod.notes,
                 sex:prod.sex,
                 bestDeal:prod.bestDeal,
+                variants:prod.variants
 
             };
         });

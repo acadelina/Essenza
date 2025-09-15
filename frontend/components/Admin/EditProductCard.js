@@ -1,6 +1,8 @@
 import styles from "../../styles/admin.module.css";
 
-export default function EditProductCard({brand,name,image,id,onRemove}) {
+export default function EditProductCard({brand,name,image,id,onRemove,variants}) {
+    const hasOutOfStock = variants.some((v) => Number(v.stock) === 0);
+
     const handleRemove = async () => {
         const token = localStorage.getItem("token");
         try {
@@ -28,9 +30,19 @@ export default function EditProductCard({brand,name,image,id,onRemove}) {
                     <h1 className={`headerText ${styles.nameText}`}>{name}</h1>
                 </div>
                 <div className={styles.priceRemove}>
+                    {hasOutOfStock && (
+                    <img
+                        src="/images/warning.png"
+                        alt="out of stock"
+                        className={styles.removeBtn}
+                        title="Some variants are out of stock"
+                    />
+                    )}
                     <img src={"/images/editIcon.png"} className={styles.editBtn} onClick={()=>window.location.href=`editProduct/${id}`} />
                     <img src={"/images/bin.png"} className={styles.removeBtn} onClick={handleRemove} />
+
                 </div>
+
             </div>
             <div className={styles.divider}></div>
         </div>

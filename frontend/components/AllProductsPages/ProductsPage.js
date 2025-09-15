@@ -29,7 +29,7 @@ export default function ProductsPage({ sex = null }) {
             if (product.notes && typeof product.notes === "string") {
                 acc.push(
                     ...product.notes
-                        .split(", ")
+                        .split(",")
                         .map((n) => n.trim())
                         .filter((n) => n.length > 0)
                 );
@@ -51,7 +51,7 @@ export default function ProductsPage({ sex = null }) {
             if (selectedNotes.length > 0) {
                 const productNotes = product.notes
                     ? product.notes
-                        .split(", ")
+                        .split(",")
                         .map((note) => note.trim())
                         .filter((note) => note.length > 0)
                     : [];

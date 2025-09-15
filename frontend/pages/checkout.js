@@ -56,6 +56,12 @@ export default function CheckoutPage() {
 
     const handleSubmit = async () => {
 
+        for (const field of ["firstName","lastName","email","phone","street","postalCode","city","cardNumber","expiryDate","cvv"]) {
+            if (!formData[field]) {
+                setError("Please fill all required fields.");
+                return;
+            }
+        }
         if (user) {
             try {
                 await placeOrder(sessionId, user.username, total, "PLACED");
@@ -86,7 +92,7 @@ export default function CheckoutPage() {
             <div className={styles.line}/>
             <div className={styles.content}>
                 <div className={styles.formWrapper}>
-                    <form onSubmit={handleSubmit}>
+                    <form >
                         <section>
                             <h2 className={"headerText"} style={{fontSize: "4vh"}}>Recipient Details</h2>
                             <div className={styles.grid}>

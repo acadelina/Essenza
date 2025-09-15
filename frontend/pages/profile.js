@@ -5,6 +5,7 @@ import styles from "../styles/profile.module.css";
 import LoginRegister from "../components/Profile/LoginRegister";
 import OrdersHistory from "../components/Profile/OrdersHistory";
 import {useCart} from "../utils/CartContext";
+import AlertBox from "../components/AlertBox";
 
 
 export default function Profile() {
@@ -35,7 +36,7 @@ export default function Profile() {
             checkAuth();
 
         } else {
-            alert(data.msg || "Login failed");
+            setError(data.msg );
         }
     };
 
@@ -66,7 +67,11 @@ export default function Profile() {
 
     if (!user) {
         return (
-            <LoginRegister error={error} onLogin={handleLogin} onRegister={handleRegister} success={success}/>
+            <div>
+                <LoginRegister error={error} onLogin={handleLogin} onRegister={handleRegister} success={success}></LoginRegister>
+                <AlertBox message={error} type={"error"} onClose={() => setError(null)}></AlertBox>
+                <AlertBox message={success} onClose={() => setSuccess(null)}></AlertBox>
+            </div>
         );
     }
 

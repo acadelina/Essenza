@@ -70,7 +70,7 @@ export default function EditProduct() {
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || "Update failed");
 
-            setInfo("Variants added successfully");
+            setInfo("Variants saved successfully");
             const refreshed = await fetch(`http://localhost:5000/api/products/${id}`);
             const refreshedData = await refreshed.json();
             setVariants(refreshedData.variants);
@@ -144,6 +144,9 @@ export default function EditProduct() {
                             <p className={styles.thinTextUpper}>STOCK</p>
                             <input
                             className={"brandCase"}
+                            style={{
+                                color: variant.stock == 0 ? "red" :"#2E2E3A"
+                            }}
                             type="number"
                             name="stock"
                             placeholder="Stock"

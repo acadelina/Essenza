@@ -46,6 +46,7 @@
     height: 13vh;
     width: 13vh;
     margin-right: 10px;
+    object-fit: contain;
 }
 
 .productInfo {
@@ -111,6 +112,7 @@
     width: 6vh;
     margin-left: 30px;
     cursor: pointer;
+    object-fit: contain;
 }
 
 /*  Footer  */

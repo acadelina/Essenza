@@ -2,7 +2,7 @@ import styles from '../../styles/product.module.css';
 
 export default function ProductDetails({product}) {
 
-    const notes = product.notes.split(", ");
+    const notes = product.notes.split(",");
     return (
         <div className={styles.detailsContainer}>
             <h1 className={`headerText ${styles.detailsHeader}`}>DETAILS</h1>
