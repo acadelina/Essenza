@@ -87,7 +87,7 @@ export default function Profile() {
                         <button className="brandCase" onClick={() => window.location.href = "/admin/addProduct"}>ADD NEW PRODUCT</button>
                         <button className="brandCase" onClick={()=>window.location.href="/admin/seeAllProducts"}>SEE ALL PRODUCTS</button>
                         <button className="brandCase" onClick={()=>window.location.href="/admin/bestDeals"}>BEST DEALS</button>
-                        <button className="brandCase">ORDERS</button>
+                        <button className="brandCase" onClick={()=>window.location.href="/admin/orders"}>ORDERS</button>
                     </div>
                 </div>
             </div>

@@ -70,12 +70,12 @@ exports.createOrder = async (req, res) => {
 
 exports.updateOrder = async (req, res) => {
     try {
-        const { user, cart } = req.params;
-        const order = await Order.findOne({ where: { user, cart } });
+        const { cart } = req.params;
+        const order = await Order.findOne({ where: {  cart } });
         if (!order) return res.status(404).json({ msg: "Order not found" });
 
-        const { total, status } = req.body;
-        await order.update({ total, status });
+        const { status } = req.body;
+        await order.update({ status });
         res.json(order);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -85,8 +85,37 @@ exports.updateOrder = async (req, res) => {
 
 exports.getOrders = async (req, res) => {
     try{
-        const orders= await Order.findAll();
-        res.json(orders);
+        const orders= await Order.findAll({order: [["cart", "DESC"]],});
+        if (!orders.length) {
+            return res.json([]);
+        }
+
+        const ordersWithItems = await Promise.all(
+            orders.map(async (order) => {
+                const items = await db.query(
+                    `SELECT  p.image
+           FROM carts_products cp
+           JOIN products_variants pv ON cp.id_variant = pv.id
+           JOIN products p ON p.id = pv.product_id
+           WHERE cp.id_cart = :cart_id`,
+                    {
+                        replacements: { cart_id: order.cart },
+                        type: db.QueryTypes.SELECT,
+                    }
+                );
+
+                return {
+                    id: order.cart,
+                    status: order.status,
+                    total: order.price,
+                    user:order.user,
+                    items,
+                };
+            })
+        );
+
+        res.json(ordersWithItems);
+
     }catch(err){
         res.status(500).json({ error: err.message });
     }

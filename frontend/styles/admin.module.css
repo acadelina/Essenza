@@ -104,7 +104,7 @@
     width: 8vh;
     margin-right: 10px;
     padding-right: 40px;
-
+    object-fit: contain;
 }
 
 .productInfo {
@@ -161,6 +161,7 @@
     align-items: center;
     height: 58vh;
     overflow-y: auto;
+    margin: 10px 0px;
 }
 
 .divider{
@@ -197,4 +198,66 @@
     align-self: center;
     gap:20px;
     margin-top:15px;
+}
+
+
+/*Orders*/
+.orders{
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px
+}
+.orderCard {
+    border: 1px solid #ccc;
+    padding: 15px 35px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+}
+
+.orderCardItems{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center
+}
+
+.orderCardItems div{
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row
+}
+
+.orderCardStatus{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content:flex-end;
+    width:100%
+}
+
+.filterOrders{
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+
+.orderHeader {
+    font-size: 3vh;
+    margin: 0;
+    color: #bc5d2f;
+}
+
+.orderText {
+    font-size: 2.5vh;
+}
+
+.orderStatus{
+    border: 1px solid #DBBCA7;
+    border-radius:5px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(214, 196, 184, 0.48);
 }

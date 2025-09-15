@@ -14,10 +14,10 @@ export default function ProductCard({brand,name,image,price}) {
 
 
             <div className={styles.productInfo}>
-                <h3>
+                <h3 className={styles.productText}>
                     {brand}
                 </h3>
-                <p>
+                <p className={styles.productText} >
                     {name}
                 </p>
 
